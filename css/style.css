@@ -1,6 +1,6 @@
 @font-face{
-    src: url(../fonts/simplicity.ttf);
-    font-family: simplicity;
+    src: url(../fonts/Existence-Light.otf);
+    font-family: existence;
 }
 
 *{
@@ -8,12 +8,12 @@
     padding: 0; 
     height: 100%; 
     overflow: hidden;
-    font-family: simplicity;
+    font-family: existence;
 }
 
 
 #main{
-    background-image: url("../images/1.jpg");
+    background-image: url("../images/background.jpg");
     background-position:center center;
     background-size: cover;
 }
