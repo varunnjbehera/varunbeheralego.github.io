@@ -1,0 +1,177 @@
+@font-face{
+    src: url(../fonts/Existence-Light.otf);
+    font-family: existence;
+}
+
+*{
+    margin: 0;
+    padding: 0; 
+    height: 100%; 
+    overflow: hidden;
+    font-family: existence;
+}
+
+
+#main{
+    background-image: url("../images/background.jpg");
+    background-position:center center;
+    background-size: cover;
+}
+
+
+.social{
+    height: 25px;
+}
+
+
+i{
+    color: black;
+    font-size: 20px;
+    height: 20px;
+    /* margin-right: 15px; */
+}
+
+.logo{
+    margin-top: 45px;
+    height: 100px;
+    animation: fadein1 2s;
+}
+
+.text{
+    margin-top: 45px;
+    height: 250px;
+    max-width:60%;
+    font-weight:500;
+    font-size:45px;
+    line-height:60px;
+    letter-spacing:-.5px;
+    animation: fadein2 4s;
+}
+
+
+
+.iconup{
+    animation: fadein3 6s;
+    height: 100px;
+    margin: 20px;
+    color: white;
+    font-size: 25px;
+    display: block;
+    line-height: 1.4;
+}
+
+.inp{
+    text-decoration: none;
+    color: rgba(32, 79, 141, 0.767);
+}
+
+@keyframes fadein1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein2 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadein3 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.something{
+    color: rgba(0, 0, 0, 0.692);
+    margin-left: 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+
+.logo1 , p , .iconup {
+    margin-left: 150px;
+}
+
+
+@media only screen and (max-width: 800px){
+    
+
+    .logo{
+        margin-top: 30px;
+        height: 75px;
+    }
+
+    .text{
+        margin-top: 20px;
+        height: 125px;
+        max-width:60%;
+        font-weight:500;
+        font-size:25px;
+        line-height:40px;
+    }
+
+    .iconup{
+        height: 100px;
+        margin: 20px;
+        color: white;
+        display: block;
+        line-height: 1.4;
+    }
+
+    .something{
+        font-size: 0.8rem;
+    }
+
+    .logo1 , p , .iconup {
+        margin-left: 50px;
+    }
+    .fab{
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    .text {
+        margin-top: 50px;
+        max-width:100%;
+        height: 450px;
+        font-size:40px;
+        line-height:60px;
+        text-align: center;
+    }
+    .logo1 , p ,.iconup {
+        margin: 0 5%;
+    }
+
+    .logo{
+        margin-top: 75px;
+        text-align: center;
+        align-items: center;
+        
+    }
+    .iconup{
+        text-align: center;
+    }
+
+    .social{
+        max-height: 25px;
+        max-width: 25px;
+    }
+  }
