@@ -10,15 +10,15 @@
     font-family: 'Existence';
     src: url(../fonts/Existence-Light.otf) format('opentype');
     font-display: swap;
+    font-weight: 300;
 }
 
 :root {
     /* Color Palette */
-    --color-primary: #204f8d;
+    --color-primary: #2563eb;
     --color-text-main: #000000;
     --color-text-muted: #666666;
-    --color-bg-overlay: rgba(255, 255, 255, 0.15); /* Subtle contrast layer */
-    --color-focus: rgba(32, 79, 141, 0.4);
+    --color-focus: rgba(37, 99, 235, 0.4);
     
     /* Spacing Scale */
     --space-xs: 0.5rem;
@@ -52,13 +52,21 @@ body {
 .hero {
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to right, var(--color-bg-overlay), transparent), url(../images/background.jpg);
+    background-image:
+        linear-gradient(
+            to right,
+            color-mix(in srgb, #fcfcfc 92%, transparent) 0%,
+            color-mix(in srgb, #fcfcfc 65%, transparent) 40%,
+            transparent 65%
+        ),
+        url(../images/background.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     padding: clamp(2rem, 5vh, 4rem) 2rem clamp(2rem, 5vh, 4rem) clamp(2rem, 10vw, 150px);
+    position: relative;
 }
 
 .content {
@@ -83,9 +91,33 @@ body {
     width: auto;
     object-fit: contain;
     display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logo-wrapper:hover .logo {
+    transform: rotate(-2deg) scale(1.04);
 }
 
 /* Typography & Text */
+.eyebrow {
+    font-family: 'SF Mono', ui-monospace, 'Cascadia Code', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+}
+
 .text-wrapper {
     animation: fadeIn 1s ease-out var(--entrance-delay-2) both;
     display: flex;
@@ -106,7 +138,8 @@ body {
     font-weight: 400;
     line-height: 1.4;
     color: var(--color-text-main);
-    max-width: 55ch; /* Optimizes readability by limiting line length */
+    max-width: 55ch;
+    text-wrap: pretty;
 }
 
 .link {
@@ -127,8 +160,8 @@ body {
     left: 0;
     background-color: var(--color-primary);
     transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .link:hover {
@@ -137,7 +170,7 @@ body {
 
 .link:hover::after {
     transform: scaleX(1);
-    transform-origin: bottom left;
+    transform-origin: left;
 }
 
 /* Footer & Socials */
@@ -159,18 +192,20 @@ body {
     color: var(--color-text-main);
     font-size: clamp(1.2rem, 2vw, 1.5rem);
     text-decoration: none;
-    transition: var(--transition-smooth);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 24px;
-    min-height: 24px;
-    border-radius: 4px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    transition: color 0.2s, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s;
 }
 
 .socials a:hover {
     color: var(--color-primary);
-    transform: translateY(-4px);
+    transform: translateY(-3px);
+    border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 /* Focus States for Accessibility */
@@ -180,11 +215,42 @@ body {
     box-shadow: 0 0 0 3px var(--color-focus);
 }
 
+/* Corner status */
+.corner {
+    position: absolute;
+    top: clamp(20px, 4vh, 36px);
+    right: clamp(24px, 5vw, 48px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'SF Mono', ui-monospace, 'Cascadia Code', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    z-index: 5;
+}
+
+.corner .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent);
+    animation: pulse 2.6s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 22%, transparent); }
+    50%       { box-shadow: 0 0 0 6px color-mix(in srgb, var(--color-primary) 6%, transparent); }
+}
+
 .copy {
     font-size: clamp(0.85rem, 1.5vw, 1rem);
     color: var(--color-text-muted);
     font-weight: 400;
     max-width: 40ch;
+    text-wrap: pretty;
 }
 
 .copy a {
@@ -232,7 +298,15 @@ body {
         padding: clamp(1.5rem, 5vh, 3rem) 20px;
         align-items: center;
         text-align: center;
-        background-position: center center;
+        background-image:
+            linear-gradient(
+                to bottom,
+                color-mix(in srgb, #fcfcfc 70%, transparent) 0%,
+                color-mix(in srgb, #fcfcfc 92%, transparent) 55%,
+                #fcfcfc 100%
+            ),
+            url(../images/background.jpg);
+        background-position: center top, center top;
     }
     .content {
         align-items: center;
