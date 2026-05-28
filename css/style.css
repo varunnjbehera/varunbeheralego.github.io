@@ -160,7 +160,7 @@ body {
     left: 0;
     background-color: var(--color-primary);
     transform: scaleX(0);
-    transform-origin: right;
+    transform-origin: left;
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -170,7 +170,6 @@ body {
 
 .link:hover::after {
     transform: scaleX(1);
-    transform-origin: left;
 }
 
 /* Footer & Socials */
