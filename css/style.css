@@ -159,9 +159,8 @@ body {
     bottom: 2px;
     left: 0;
     background-color: var(--color-primary);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .link:hover {
@@ -169,7 +168,7 @@ body {
 }
 
 .link:hover::after {
-    transform: scaleX(1);
+    clip-path: inset(0 0% 0 0);
 }
 
 /* Footer & Socials */
